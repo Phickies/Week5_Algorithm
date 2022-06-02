@@ -97,7 +97,7 @@ class Boid {
   void applyForce(PVector force) {
     acceleration.add(PVector.div(force, mass));
   }
-  
+
   // Finding nearby birds
   PVector seek(PVector target) {
     PVector desired = PVector.sub(target, position);
