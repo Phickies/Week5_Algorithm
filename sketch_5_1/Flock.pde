@@ -26,10 +26,10 @@ class Flock {
   }
 
   void flock() {
-    for (int i=0; i < birds.size(); i++) {
-      birds.get(i).applyForce(separate(birds.get(i), birds));
-      birds.get(i).applyForce(align(birds.get(i), birds));
-      birds.get(i).applyForce(cohesion(birds.get(i), birds));
+    for (Boid bird : birds) {
+      bird.applyForce(separate(bird, birds));
+      bird.applyForce(align(bird, birds));
+      bird.applyForce(cohesion(bird, birds));
     }
   }
 
