@@ -9,6 +9,12 @@ class Hunter extends Boid {
     super();
   }
 
+  void update(ObstacleSystem obstacles, Flock birds) {
+    update();
+    avoid(obstacles);
+    hunt(birds);
+  }
+
   void show() {
     float theta = velocity.heading() + PI/2;
     fill(255, 0, 0);
@@ -22,7 +28,7 @@ class Hunter extends Boid {
     endShape(CLOSE);
     popMatrix();
   }
-  
+
   // Hunting birds
   void hunt(Flock list) {
     PVector cohesion        = new PVector();
@@ -52,7 +58,7 @@ class Hunter extends Boid {
     PVector desired = PVector.sub(target, position);
     float d         = desired.mag();
     desired.normalize();
-    
+
     // If close to target, slow down
     if (d < 200) {
       float b = map(d, 0, 100, 0, maxSpeed);

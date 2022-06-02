@@ -7,6 +7,7 @@ Hunter         dog;
 
 void setup() {
   size(1000, 1000);
+  fullScreen();
   noStroke();
   ellipseMode(RADIUS);
   obstacles = new ObstacleSystem();
@@ -17,15 +18,11 @@ void setup() {
 void draw() {
   background(0);
   birds.update(obstacles, dog);
-  dog.update();
-  dog.avoid(obstacles);
-  birds.separate();
-  birds.align();
-  birds.cohesion();
-  dog.hunt(birds);
+  dog.update(obstacles, birds);
+  birds.flock();
+  obstacles.show();
   birds.show();
   dog.show();
-  obstacles.show();
 }
 
 void mousePressed() {
